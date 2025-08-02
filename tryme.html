@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TRYME</title>
+<style>
+ body {
+  background: #181c23;
+  color: #e7e9ec;
+  font-family: Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+}
+.container {
+  max-width: 450px;
+  margin: 80px auto;
+  padding: 32px 34px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.63);
+  border-radius: 12px;
+  background: #212734;
+  position: relative;
+}
+#hazard-alert {
+  color: #e22238;
+  padding: 9px 0;
+  margin-bottom: 14px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 6px;
+  letter-spacing: 0.05em;
+}
+#selfDestructText {
+  width: 100%;
+  height: 130px;
+  margin-bottom: 8px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1.5px solid #303949;
+  box-sizing: border-box;
+  padding: 12px;
+  background: #252a34;
+  color: #edeef0;
+  outline: none;
+  resize: vertical;
+}
+#overlay {
+  position: absolute;
+  left: 34px;
+  top: 154px; /* adjust to overlay your textarea! */
+  pointer-events: none;
+  color: #edeef0;
+  width: calc(100% - 68px);
+  font-size: 16px;
+  white-space: pre-wrap;
+  z-index: 10;
+}
+.fade-out-char {
+  display: inline-block;
+  animation: fadeOut 1s forwards;
+}
+@keyframes fadeOut {
+  from { opacity: 1; transform: translateY(0);}
+  to { opacity: 0; transform: translateY(-10px);}
+}
+#counter {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #9faaab;
+}
+
+</style>
+</head>
+<body>
+  <div class="container">
+    <h2 style="text-align:center;">🚨 Self-Destructing Text 🚨</h2>
+    <div id="hazard-alert">warning: THIS TEXT HAS A LONGER LIFESPAN THAN YOUR RELATIONSHIP!!</div>
+    <textarea id="selfDestructText" placeholder="tryme"></textarea>
+    <div id="overlay"></div>
+  </div>
+  
+
+
+<script>
+  const textarea = document.getElementById('selfDestructText');
+  const message = document.getElementById('message');
+
+  function removeRandomCharacter() {
+    let text = textarea.value;
+    if (text.length === 0) return;
+
+    const pos = Math.floor(Math.random() * text.length);
+
+    const before = text.slice(0, pos);
+    const char = text.charAt(pos);
+    const after = text.slice(pos + 1);
+    textarea.value = before + after;
+
+  }
+
+  setInterval(removeRandomCharacter, 400);
+</script>
+
+</body><center>YOU...ARE...MORE...USELESS...THAN...MY...PROJECT...BABYGURL</center>
+</html>
